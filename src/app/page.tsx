@@ -8,6 +8,7 @@ import { Wallet, TrendingUp, TrendingDown } from 'lucide-react';
 import BalanceChart from '@/components/BalanceChart';
 import ExpenseChart from '@/components/ExpenseChart';
 import TransactionList from '@/components/TransactionList';
+import Insights from '@/components/Insights';
 
 export default function Home() {
   // 1. Pull transactions from our global store
@@ -56,6 +57,19 @@ export default function Home() {
               icon={TrendingDown} 
               trend="down"
             />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+             {/* ... your existing cards ... */}
+          </div>
+
+          {/* AI Insights Section */}
+          <div className="mt-8">
+            <Insights />
+          </div>
+
+          {/* Charts Section */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">
+             {/* ... your existing charts ... */}
           </div>
 
           {/* Placeholder for Charts (Next Step) */}
