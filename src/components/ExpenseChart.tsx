@@ -8,7 +8,7 @@ interface ExpenseChartProps {
   transactions: Transaction[];
 }
 
-// A pleasant color palette for our categories
+
 const COLORS = ['#3b82f6', '#f97316', '#8b5cf6', '#ec4899', '#10b981', '#f59e0b'];
 
 export default function ExpenseChart({ transactions }: ExpenseChartProps) {
@@ -25,7 +25,7 @@ export default function ExpenseChart({ transactions }: ExpenseChartProps) {
     }
     return acc;
   }, [])
-  .sort((a, b) => b.value - a.value); // Sort from highest to lowest expense
+  .sort((a, b) => b.value - a.value);
 
   if (chartData.length === 0) {
     return <div className="h-full flex items-center justify-center text-gray-500">No expenses recorded yet.</div>;

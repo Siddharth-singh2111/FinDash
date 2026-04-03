@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware'; // 1. Import persist
+import { persist } from 'zustand/middleware'; 
 
 export type TransactionType = 'income' | 'expense';
 
