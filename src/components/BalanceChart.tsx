@@ -61,7 +61,7 @@ export default function BalanceChart({ transactions }: BalanceChartProps) {
             <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e5e7eb" />
             <XAxis dataKey="date" tick={{ fontSize: 12 }} tickLine={false} axisLine={false} />
             <YAxis tickFormatter={(val) => `$${val}`} tick={{ fontSize: 12 }} tickLine={false} axisLine={false} />
-            <Tooltip formatter={(value: number) => formatCurrency(value)} cursor={{ stroke: '#9ca3af', strokeWidth: 1, strokeDasharray: '3 3' }} />
+            <Tooltip formatter={(value: any) => formatCurrency(value)} cursor={{ stroke: '#9ca3af', strokeWidth: 1, strokeDasharray: '3 3' }} />
             <Legend iconType="circle" wrapperStyle={{ fontSize: '14px', paddingTop: '10px' }} />
             <Area type="monotone" dataKey="income" name="Income" stroke="#2563eb" strokeWidth={2} fillOpacity={1} fill="url(#colorIncome)" />
             <Area type="monotone" dataKey="expense" name="Expenses" stroke="#ef4444" strokeWidth={2} fillOpacity={1} fill="url(#colorExpense)" />

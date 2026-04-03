@@ -51,7 +51,7 @@ export default function ExpenseChart({ transactions }: ExpenseChartProps) {
                 <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
               ))}
             </Pie>
-            <Tooltip formatter={(value: number) => formatCurrency(value)} />
+            <Tooltip formatter={(value: any) => formatCurrency(value)} />
             <Legend layout="vertical" verticalAlign="middle" align="right" iconType="circle" />
           </PieChart>
         </ResponsiveContainer>
