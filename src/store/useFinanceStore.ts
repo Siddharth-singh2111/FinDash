@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware'; 
+import { persist } from 'zustand/middleware';
 
 export type TransactionType = 'income' | 'expense';
 
@@ -13,6 +13,7 @@ export interface Transaction {
 }
 
 const initialTransactions: Transaction[] = [
+  // ... (keep your existing mock data here)
   { id: '1', date: '2026-04-01', amount: 3200, category: 'Salary', type: 'income', description: 'Monthly Salary' },
   { id: '2', date: '2026-04-02', amount: 850, category: 'Housing', type: 'expense', description: 'Rent' },
   { id: '3', date: '2026-04-05', amount: 120, category: 'Food', type: 'expense', description: 'Groceries' },
@@ -23,29 +24,38 @@ const initialTransactions: Transaction[] = [
 interface FinanceState {
   transactions: Transaction[];
   role: 'admin' | 'viewer';
-  addTransaction: (transaction: Omit<Transaction, 'id'>) => void;
+  isLoading: boolean; // 1. Added loading state
+  addTransactionAsync: (transaction: Omit<Transaction, 'id'>) => Promise<void>; // 2. Changed to Async
   setRole: (role: 'admin' | 'viewer') => void;
 }
 
-// 2. Wrap the store configuration in persist()
 export const useFinanceStore = create<FinanceState>()(
   persist(
     (set) => ({
       transactions: initialTransactions,
       role: 'viewer',
+      isLoading: false,
       
-      addTransaction: (transaction) => 
+      // 3. Mock API Call Simulation
+      addTransactionAsync: async (transaction) => {
+        set({ isLoading: true }); // Start loading
+        
+        // Simulate a 1-second network request to a backend
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        
         set((state) => ({
           transactions: [
             ...state.transactions, 
             { ...transaction, id: crypto.randomUUID() }
-          ]
-        })),
+          ],
+          isLoading: false // End loading
+        }));
+      },
         
       setRole: (role) => set({ role }),
     }),
     {
-      name: 'finance-storage', // 3. Name of the item in localStorage
+      name: 'finance-storage',
     }
   )
 );
