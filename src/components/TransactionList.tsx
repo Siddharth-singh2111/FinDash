@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useFinanceStore, TransactionType } from '@/store/useFinanceStore';
 import { formatCurrency, cn } from '@/lib/utils';
-import { Search, Plus, X, Download, Loader2 } from 'lucide-react'; // Added Download and Loader2
+import { Search, Plus, X, Download, Loader2 } from 'lucide-react'; 
 import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'sonner';
 
@@ -13,7 +13,7 @@ export default function TransactionList() {
 
   const [searchTerm, setSearchTerm] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('All');
-  const [sortBy, setSortBy] = useState('date-desc'); // Added Advanced Sorting state
+  const [sortBy, setSortBy] = useState('date-desc');
   const [isAdding, setIsAdding] = useState(false);
 
   const [newTx, setNewTx] = useState({

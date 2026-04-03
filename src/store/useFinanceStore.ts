@@ -13,7 +13,7 @@ export interface Transaction {
 }
 
 const initialTransactions: Transaction[] = [
-  // ... (keep your existing mock data here)
+  
   { id: '1', date: '2026-04-01', amount: 3200, category: 'Salary', type: 'income', description: 'Monthly Salary' },
   { id: '2', date: '2026-04-02', amount: 850, category: 'Housing', type: 'expense', description: 'Rent' },
   { id: '3', date: '2026-04-05', amount: 120, category: 'Food', type: 'expense', description: 'Groceries' },
@@ -24,8 +24,8 @@ const initialTransactions: Transaction[] = [
 interface FinanceState {
   transactions: Transaction[];
   role: 'admin' | 'viewer';
-  isLoading: boolean; // 1. Added loading state
-  addTransactionAsync: (transaction: Omit<Transaction, 'id'>) => Promise<void>; // 2. Changed to Async
+  isLoading: boolean; 
+  addTransactionAsync: (transaction: Omit<Transaction, 'id'>) => Promise<void>; 
   setRole: (role: 'admin' | 'viewer') => void;
 }
 
@@ -48,7 +48,7 @@ export const useFinanceStore = create<FinanceState>()(
             ...state.transactions, 
             { ...transaction, id: crypto.randomUUID() }
           ],
-          isLoading: false // End loading
+          isLoading: false 
         }));
       },
         
